@@ -24,8 +24,7 @@ $checkEmail = isEmailExists($email);
 if (!$checkEmail) {
     $registerSuccess = registerUser($name, $email, $pass, $profile_pic, $birthday);
     if ($registerSuccess) {
-        echo "สมัครสำเร็จ!";
-        renderView('register_get',['registerSuccess' => $registerSuccess]);
+        renderView('login_get',['registerSuccess' => $registerSuccess]);
     } else {
         echo "เกิดข้อผิดพลาดในการสมัคร";
     }

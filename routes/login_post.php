@@ -16,7 +16,6 @@ if ($result) {
     renderView('activity_get', ['Events' => $Events]);
 } else {
     $_SESSION['message'] = 'รหัสไม่ถูกต้อง';
-    echo "รหัสไม่ถูกต้อง";
     renderView('login_get');
     unset($_SESSION['message']);
     unset($_SESSION['timestamp']);

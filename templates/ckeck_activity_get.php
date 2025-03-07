@@ -14,7 +14,7 @@ $events = $data['myEvents'];
 </head>
 
 <body>
-<h1>เช็คกิจกรรมที่สร้าง</h1>
+    <h1>เช็คกิจกรรมที่สร้าง</h1>
     <div class="container">
         <div class="content-container">
             <div class="request-container">
@@ -25,6 +25,10 @@ $events = $data['myEvents'];
                                 <h4>กิจกรรม: <?php echo htmlspecialchars($row['even_name']); ?></h4>
                             </div>
                             <div class="action-buttons">
+                                <a href="/request?uid=<?= ($row["user_id"]); ?>">
+                                    <button class="btn btn-warning">คำขอกิจกรรม</button>
+                                    <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($row["user_id"]); ?>">
+                                </a>
                                 <a href="/edit_activity?eid=<?= ($row["eid"]); ?>">
                                     <button class="btn btn-warning">แก้ไข</button>
                                     <input type="hidden" name="event_id" value="<?php echo htmlspecialchars($row["eid"]); ?>">

@@ -21,6 +21,9 @@
                     <div class="mb-3">
                         <input type="password" name="password" class="form-control p-2" placeholder="รหัสผ่าน" required>
                     </div>
+                    <div class="mb-3">
+                        <p><?php if(isset($_SESSION['message'])) {echo $_SESSION['message'];unset($_SESSION['message']); }?></p>
+                    </div>
                     <div class="d-grid mt-5">
                         <button type="submit" class="btn btn-color p-1">เข้าสู่ระบบ</button>
                     </div>

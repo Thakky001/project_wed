@@ -64,40 +64,23 @@ function deleteEvent($event_id) {
     
     function getEventById($event_id) {
         $conn = getConnection();
-        $sql = "SELECT * FROM events WHERE eid = ?";
-        $stmt = $conn->prepare($sql);
-    
-        $stmt->bind_param("i", $event_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $event = $result->fetch_assoc();
-    
-        return $event; // คืนค่าข้อมูลกิจกรรมเป็น array
-    }
-    
-    function updateEventMemberCount($event_id) {
-        // นับจำนวนผู้ใช้ที่ลงทะเบียนอีเวนต์นี้
-        $conn = getConnection();
-        $sql = "SELECT COUNT(*) AS total FROM register_events WHERE event_id = ?";
+        $sql = "SELECT e.*, 
+                       (SELECT COUNT(event_id) FROM register_events r WHERE r.event_id = e.eid) AS total_registered 
+                FROM events e
+                WHERE e.eid = ?";
+        
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $event_id);
         $stmt->execute();
         $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        $total_members = $row['total'];
-    
-        // อัปเดตจำนวนสมาชิกในตาราง events
-        $update_sql = "UPDATE events SET member_count = ? WHERE id = ?";
-        $update_stmt = $conn->prepare($update_sql);
-        $update_stmt->bind_param("ii", $total_members, $event_id);
-        $update_stmt->execute();
-    
-        return $total_members;
+        return $result->fetch_assoc(); 
     }
+    
+    
 
     function getUserEvents($user_id) {
         $conn = getConnection(); // ฟังก์ชันเชื่อมต่อฐานข้อมูล
-        $sql = "SELECT eid, even_name, max_member, date, description, img, status FROM events WHERE user_id = ?";
+        $sql = "SELECT eid, even_name, max_member, date, description, img, status, user_id FROM events WHERE user_id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $user_id);
         $stmt->execute();

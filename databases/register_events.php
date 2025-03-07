@@ -160,6 +160,19 @@ function checkName($event_id)
     return $result;
 }
 
+function countEvent($event_id)
+{
+    $conn = getConnection();
+    $sql = "SELECT  COUNT(event_id)
+        FROM register_events 
+        WHERE event_id =?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $event_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
+}
+
 
 
 
