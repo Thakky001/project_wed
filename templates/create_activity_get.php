@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group">
                     <label for="eventTime">เวลาการจัดกิจกรรม</label>
-                    <input type="datetime-local" id="date" name="date">
+                    <input type="date" id="date" name="date">
                 </div>
                 <div class="form-group">
                     <select name="status" required>

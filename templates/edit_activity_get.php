@@ -39,7 +39,7 @@ $event = $data['result'];
                 </div>
                 <div class="form-group">
                     <label for="eventTime">เวลาการจัดกิจกรรม</label>
-                    <input type="datetime-local" id="date" name="date" value="<?php echo htmlspecialchars($event['date']); ?>">
+                    <input type="date" id="date" name="date" value="<?php echo htmlspecialchars($event['date']); ?>">
                 </div>
                 <div class="form-group">
                     <select name="status" required>

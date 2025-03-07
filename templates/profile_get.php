@@ -20,7 +20,6 @@ $profile_picture = !empty($result['profile_picture']) ? $result['profile_picture
     <div class="container">
         <div class="profile-container">
             <div class="profile">
-                <h1>โปรไฟล์</h1>
                 <img src="uploads/<?= htmlspecialchars($result['img'] ?? 'ไม่มีข้อมูล', ENT_QUOTES, 'UTF-8') ?>" alt="Profile Image">
                 <p>ชื่อ: <?= htmlspecialchars($result['name'] ?? 'ไม่มีข้อมูล', ENT_QUOTES, 'UTF-8') ?></p>
                 <p>วันเกิด: <?= htmlspecialchars($result['birthday'] ?? 'ไม่มีข้อมูล', ENT_QUOTES, 'UTF-8') ?></p>
