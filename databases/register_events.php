@@ -113,7 +113,7 @@ function getPendingEventRequests($creatorId) {
         FROM register_events r
         JOIN users u ON r.user_id = u.uid
         JOIN events e ON r.event_id = e.eid
-        WHERE e.user_id = ? AND r.status = 'pending'
+        WHERE e.eid = ? AND r.status = 'pending'
     ");
 
     if (!$stmt) {

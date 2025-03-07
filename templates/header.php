@@ -48,8 +48,6 @@ $hide_header = in_array($page, ["logout", "register"]);
         <a href="/check_name">เช็คชื่อ</a>
         <a href="/ckeck_activity">เช็คกิจกรรม</a>
         <a href="/create_activity">สร้างกิจกรรม</a>
-        <a href="/request">คำร้อง</a>
-        <a href="/member">ผู้เข้าร่วมกิจกรรม</a>
         <a href="/logout">ออกจากระบบ</a>
     </div>
     <?php endif; ?>

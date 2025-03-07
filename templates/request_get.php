@@ -1,6 +1,5 @@
 <?php
 $result = $data['requests'];
-
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +18,7 @@ $result = $data['requests'];
         <div class="content-container">
             <div class="request-container">
                 <?php foreach ($result as $row) { ?>
+                    <?php if($row['status'] == 'pending'){ ?>
                     <div class="request-card"><span><?php echo htmlspecialchars($row["name"]); ?></span>
                         <div class="button-group">
                             <a href="/anumat?eid=<?=($row['eid']); ?>&uid=<?=($row['uid']);?>&status=<?=('confirm')?>">
@@ -29,6 +29,7 @@ $result = $data['requests'];
                             </a>
                         </div>
                     </div>
+                <?php }?>
                 <?php } ?>
             </div>
         </div>
