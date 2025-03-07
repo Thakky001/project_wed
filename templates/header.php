@@ -25,7 +25,6 @@
             <a href="/ckeck_activity">เช็คกิจกรรม</a>
             <a href="/create_activity">สร้างกิจกรรม</a>
             <a href="/request">คำร้อง</a>
-            <a href="/member">ผู้เข้าร่วมกิจกรรม</a>
             <a href="/logout">ออกจากระบบ</a>
         <?php } ?>
     </div>

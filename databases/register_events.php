@@ -146,7 +146,19 @@ function acceptRequest($status, $requestId, $eventId) {
 
 }
 
-
+function checkName($event_id)
+{
+    $conn = getConnection();
+    $sql = "SELECT DISTINCT u.*, r.event_id, r.status 
+        FROM users u 
+        JOIN register_events r ON u.uid = r.user_id
+        WHERE event_id =?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $event_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
+}
 
 
 

@@ -1,3 +1,7 @@
+<?php
+    $result = $data['result'];
+?>
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -14,18 +18,13 @@
     <div class="container">
         <div class="content-container">
             <div class="request-container">
-                <div class="request-card"><span>ชื่อสมาชิก 1</span> <span class="status-text">ร่วมกิจกรรม</span></div>
-                <div class="request-card"><span>ชื่อสมาชิก 2</span> <span class="status-text">ร่วมกิจกรรม</span></div>
-                <div class="request-card"><span>ชื่อสมาชิก 3</span> <span class="status-text">ร่วมกิจกรรม</span></div>
-                <div class="request-card"><span>ชื่อสมาชิก 4</span> <span class="status-text">ไม่ร่วมกิจกรรม</span></div>
-                <div class="request-card"><span>ชื่อสมาชิก 5</span> <span class="status-text">ไม่ร่วมกิจกรรม</span></div>
-                <div class="request-card"><span>ชื่อสมาชิก 6</span> <span class="status-text">ไม่ร่วมกิจกรรม</span></div>
-                <div class="request-card"><span>ชื่อสมาชิก 7</span> <span class="status-text">ไม่ร่วมกิจกรรม</span></div>
-                <div class="request-card"><span>ชื่อสมาชิก 8</span> <span class="status-text">ร่วมกิจกรรม</span></div>
-                <div class="request-card"><span>ชื่อสมาชิก 9</span> <span class="status-text">ร่วมกิจกรรม</span></div>
-                <div class="request-card"><span>ชื่อสมาชิก 10</span> <span class="status-text">ร่วมกิจกรรม</span></div>
-                <div class="request-card"><span>ชื่อสมาชิก 11</span> <span class="status-text">ร่วมกิจกรรม</span></div>
-
+            <?php if (!empty($result)) { ?>
+                    <?php while ($row = $result->fetch_assoc()) { ?>
+                        <div class="request-card"><span><?php echo htmlspecialchars($row['name']); ?></span> <span class="status-text"><?php echo htmlspecialchars($row['status']); ?></span></div>
+                    <?php } ?>
+                <?php } else { ?>
+                    <p class="text-center text-danger">❌ ไม่พบสมาชิก</p>
+                <?php } ?>
             </div>
         </div>
     </div>
