@@ -16,7 +16,6 @@
         $registerSuccess = registerEvent($user_id, $event_id);
         if ($registerSuccess) {
             echo "ลงทะเบียนกิจกรรมสำเร็จ!";
-            //updateEventMemberCount($event_id); // อัปเดตสถานะกิจกรรม
             renderView('events_get',['result' => $result]);
         } else {
             echo "เกิดข้อผิดพลาดในการลงทะเบียน";

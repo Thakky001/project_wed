@@ -51,29 +51,12 @@ function deleteEvent($event_id) {
     }
     
     
-    function searchEvents($search_keyword, $search_date): mysqli_result {
+    function searchEvents($search_keyword): mysqli_result {
         $conn = getConnection();
-        $sql = "SELECT * FROM events WHERE even_name LIKE ?";
-        $params = [];
-        $types = "s";
-        $search_param = "%" . $search_keyword . "%";
-        $params[] = &$search_param;
-
-        if (!empty($search_date)) {
-            $sql .= " AND date = ?";
-            $params[] = &$search_date;
-            $types .= "s";
-        }
-
-        $sql .= " ORDER BY date ASC";
+        $sql = "SELECT * FROM events WHERE even_name LIKE ? ORDER BY date ASC";
         $stmt = $conn->prepare($sql);
-
-        if (!empty($search_date)) {
-            $stmt->bind_param($types, ...$params);
-        } else {
-            $stmt->bind_param("s", $search_param);
-        }
-
+        $search_param = "%" . $search_keyword . "%";
+        $stmt->bind_param("s", $search_param);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result;
