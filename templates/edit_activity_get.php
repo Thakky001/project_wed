@@ -13,7 +13,6 @@ $event = $data['result'];
 </head>
 
 <body>
-    <h1>แก้ไขกิจกรรม</h1>
     <div class="content-container">
         <div class="activity-card">
             <div class="activity-info">

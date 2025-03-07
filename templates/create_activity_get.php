@@ -10,7 +10,6 @@
 </head>
 
 <body>
-<h1>สร้างกิจกรรม</h1>
     <div class="content-container">
         <div class="activity-card">
             <div class="activity-info">

@@ -14,7 +14,6 @@
 </head>
 
 <body>
-<h1>สมาชิกที่เข้าร่วมกิจกรรม</h1>
     <div class="container">
         <div class="content-container">
             <div class="request-container">

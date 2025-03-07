@@ -15,7 +15,6 @@ $result = $data['requests'];
 </head>
 
 <body>
-<h1>คำร้องขอเข้าร่วมกิจกรรม</h1>
     <div class="container">
         <div class="content-container">
             <div class="request-container">

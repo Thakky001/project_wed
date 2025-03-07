@@ -16,7 +16,6 @@ $result = isset($data['Events']) ? $data['Events'] : null;
     <div class="content-container">
         <div class="activity-card">
             <div class="activity-info">
-                <h1>รายละเอียดกิจกรรม</h1>
                 <?php if (!empty($result)) { ?>
                     <img src=<?= htmlspecialchars($result['img']); ?>><br>
                     <text class="btn btn-secondary">จำนวนผู้เข้าร่วม <?php echo htmlspecialchars($result["total_registered"]); ?>/<?php echo htmlspecialchars($result["max_member"]); ?></text>

@@ -14,7 +14,6 @@ $events = $data['myEvents'];
 </head>
 
 <body>
-    <h1>เช็คกิจกรรมที่สร้าง</h1>
     <div class="container">
         <div class="content-container">
             <div class="request-container">

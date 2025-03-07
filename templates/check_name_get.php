@@ -10,7 +10,6 @@
 </head>
 
 <body>
-<h1>เช็คชื่อ</h1>
     <div class="container">
         <div class="content-container">
             <div class="activity-container">

@@ -14,7 +14,6 @@
 </head>
 <body>
     <div class="container mt-4">
-        <h1 class="text-center">กิจกรรม</h1>
         
         <div class="d-flex justify-content-center my-3">
             <form method="get" action="/activity" class="input-group w-50">

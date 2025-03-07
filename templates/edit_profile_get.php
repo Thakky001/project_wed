@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/boxcenter.css">
 </head>
 <body>
-<h1>แก้ไขโปรไฟล์</h1>
 <div class="container">
         <div class="profile-container">
             <div class="profile-form">
