@@ -14,16 +14,16 @@ $result = isset($data['Events']) ? $data['Events'] : null;
 </head>
 
 <body>
-<h1>รายละเอียดกิจกรรม</h1>
     <div class="content-container">
         <div class="activity-card">
             <div class="activity-info">
+                <h1>รายละเอียดกิจกรรม</h1>
                 <?php if (!empty($result)) { ?>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyD-461keXKrLe2hEQh2rp7owl1Iq8tbpuBg&s"><br>
+                    <img src=<?= htmlspecialchars($result['img']); ?>><br>
                     <text class="btn btn-secondary">จำนวนผู้เข้าร่วม <?php echo htmlspecialchars($result["max_member"]); ?></text>
                     <a href="/member?eid=<?= ($result["eid"]); ?>"><text class="btn btn-secondary">ผู้เข้าร่วม</text></a><br><br>
-                        <input type="hidden" name="eid" value="<?= htmlspecialchars($result['eid']); ?>">
-                        <a href="/joinEvent?eid=<?=$result['eid'];?>" class="btn btn-success">สมัครเข้าร่วม</a>
+                    <input type="hidden" name="eid" value="<?= htmlspecialchars($result['eid']); ?>">
+                    <a href="/joinEvent?eid=<?= $result['eid']; ?>" class="btn btn-success">สมัครเข้าร่วม</a>
             </div>
             <div class="activity-details">
                 <h4>ชื่อกิจกรรม</h4>

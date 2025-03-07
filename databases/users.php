@@ -26,11 +26,9 @@
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssssi", $name, $email, $img, $birthday, $id);
         
-        if ($stmt->execute()) {
-            return true; // อัปเดตสำเร็จ
-        } else {
-            return "Error: " . $stmt->error;
-        }
+        $result = $stmt->execute();
+        return $result; // อัปเดตสำเร็จ
+
     }
 
     function setUser(){
