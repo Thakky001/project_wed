@@ -1,5 +1,5 @@
 <?php
-    $result = isset($data['Events']) ? $data['Events'] : null;
+    $result = isset($data['Events']) ? $data['Events'] : null; ///45648979879879
     $search_keyword = isset($_GET['search']) ? $_GET['search'] : "";
 ?>
 
