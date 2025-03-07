@@ -1,0 +1,128 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20241217/pngtree-breathtaking-mountainous-view-beneath-a-soft-and-dreamy-pink-toned-sky-image_16822675.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+}
+.sidebar {
+    position: fixed;
+    left: -200px;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    background: #fff;
+    padding-top: 60px;
+    transition: 0.3s;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+.sidebar a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px solid #ddd;
+}
+.sidebar a:hover {
+    background: #ddd;
+}
+.menu-button {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+.content-container {
+    max-width: 800px;
+    margin: auto;
+    margin-top: 80px;
+    text-align: center;
+    padding: 20px;
+}
+.activity-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.activity-info {
+    flex: 1;
+    padding-right: 20px;
+}
+.activity-info img {
+    width: 100%;
+    max-width: 300px; /* Set fixed size for image */
+    height: auto;
+    margin-bottom: 20px;
+}
+.activity-details {
+    max-width: 300px;
+    text-align: left;
+}
+.activity-info button {
+    margin-bottom: 10px;
+}
+
+/*in create activity*/
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.activity-card {
+    display: flex;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.activity-info {
+    width: 30%;
+    padding-right: 20px;
+}
+
+.activity-info img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.activity-details {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.activity-details h4 {
+    margin-bottom: 10px;
+}
+
+.activity-details .form-group {
+    margin-bottom: 20px;
+}
+
+.activity-details input[type="text"],
+.activity-details input[type="datetime-local"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.activity-details button {
+    margin-top: 10px;
+}

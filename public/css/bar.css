@@ -1,0 +1,75 @@
+.container {
+    padding-top: 80px; /* เพิ่มระยะห่างจาก Navbar */
+}
+        .navbar {
+    width: 100%;
+    height: 60px;
+    background: #f5a1ef;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.navbar-title {
+    flex-grow: 1; /* ขยายให้ชื่ออยู่ตรงกลาง */
+    text-align: center;
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+}
+
+/* ชื่อหน้าในแถบบาร์ */
+.navbar h2 {
+    margin: 0;
+    font-size: 22px;
+    text-align: center;
+    flex-grow: 1;
+    color: #333;
+}
+/* ปุ่มแฮมเบอร์เกอร์ */
+.menu {
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 10px;
+    z-index: 1000;
+}
+/* เมนูแฮมเบอร์เกอร์ */
+.menu {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* เมนู dropdown */
+.menu-list {
+    display: none; /* เริ่มต้นซ่อนเมนู */
+    position: absolute; /* ใช้ตำแหน่งแบบ absolute */
+    top: 60px; /* ให้เมนูอยู่ใต้แถบบาร์ */
+    left: 20px; /* ระยะห่างจากขอบซ้าย */
+    background: #f0dada;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 999; /* ให้แน่ใจว่าเมนูจะอยู่ด้านบน */
+}
+
+.menu-list a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: black;
+}
+
+.menu-list a:hover {
+    background: #d8bebe;
+}
+
+/* เมื่อคลิกที่ปุ่มเมนู เมนูจะแสดง */
+.menu-list.active {
+    display: block;
+}
