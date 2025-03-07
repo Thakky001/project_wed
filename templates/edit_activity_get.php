@@ -3,7 +3,6 @@ $event = $data['result'];
 ?>
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +32,7 @@ $event = $data['result'];
                 </div>
                 <div class="form-group">
                     <label for="eventDetails">ข้อมูลอื่นๆ</label>
-                    <input type="text" id="dascription" name="dascription" placeholder="เพิ่มข้อมูลอื่นๆ" value="<?php echo htmlspecialchars($event['description']); ?>">
+                    <input type="text" id="description" name="description" placeholder="เพิ่มข้อมูลอื่นๆ" value="<?php echo htmlspecialchars($event['description']); ?>">
                 </div>
                 <div class="form-group">
                     <label for="max_member">กำหนดจำนวนผู้เข้าร่วม</label>

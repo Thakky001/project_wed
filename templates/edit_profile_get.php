@@ -1,5 +1,5 @@
 <?php
-   $profile = isset($data['result']) ? $data['result'] : [];
+   $profile = $data['result'];
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +38,6 @@
                         <label for="email">อีเมล</label>
                         <input type="email" id="email" name="email" class="form-control" value="<?php echo htmlspecialchars($profile['email']); ?>">
                     </div>
-
                     <button type="submit" class="btn btn-primary btn-block">บันทึกการแก้ไข</button>
                 </form>
             </div>

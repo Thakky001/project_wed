@@ -1,12 +1,11 @@
 <?php
-$id = isset($_GET["uid"]) ? (int)$_GET["uid"] : 0;
-// ดึงข้อมูลของผู้ใช้
+
+$name = $_POST["name"];
+$email = $_POST["email"] ;
+$birthday = $_POST["birthday"]; 
+$id = $_SESSION["uid"];
 $result = getUserById($id);
-
-$name = isset($_POST["name"]) ? trim($_POST["name"]) : "";
-$email = isset($_POST["email"]) ? trim($_POST["email"]) : "";
-$birthday = isset($_POST["birthday"]) ? trim($_POST["birthday"]) : ""; // รับวันเกิด
-
+var_dump($id);
 // ตรวจสอบว่ามีไฟล์อัปโหลดหรือไม่
 if (isset($_FILES["img"]) && $_FILES["img"]["error"] == 0) {
     $target_dir = "uploads/";
@@ -17,7 +16,8 @@ if (isset($_FILES["img"]) && $_FILES["img"]["error"] == 0) {
     $img = basename($_FILES["img"]["name"]);
     $target_file = $target_dir . $img;
     if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
-        // ใช้ชื่อไฟล์ที่อัปโหลดได้
+        
+        // var_dump($result);
         $updateSuccess = updateUser($result, $name, $email, $img, $birthday);
         var_dump($updateSuccess);
         renderView('profile_get',['result' => $result]);

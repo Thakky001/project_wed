@@ -2,7 +2,7 @@
 $name = $_POST['name'] ?? '';
 $max_member = $_POST['max_member'] ?? 0;
 $status = $_POST["status"] ?? '';
-$dascription = $_POST['description'] ?? '';
+$description = $_POST['description'] ?? '';
 $event_date = $_POST['date'] ?? '';
 $eid = (int)$_GET['eid'];
 $user_id = $_SESSION["uid"];
@@ -18,9 +18,9 @@ $user_id = $_SESSION["uid"];
             mkdir($upload_dir, 0777, true);
         }
     
-        $img_path = $upload_dir . $img_name;
+        $img_path = $img_name;
         if (move_uploaded_file($img_tmp_name, $img_path)) {
-            $result1 = updateEvent($name, $max_member, $dascription, $img_path, $event_date, $status, $eid);
+            $result1 = updateEvent($name, $max_member, $description, $img_path, $event_date, $status, $eid);
             $myEvents = getUserEvents($user_id);
             renderView('ckeck_activity_get', ['myEvents' => $myEvents]);
         }
