@@ -16,7 +16,7 @@
             <div class="card-body">
                 <form action="/login" method="post">
                     <div class="mb-3 mt-5">
-                        <input type="email" id="email" name="email" class="form-control p-2" placeholder="ชื่อผู้ใช้" required>
+                        <input type="email" id="email" name="email" class="form-control p-2" placeholder="อีเมล" required>
                     </div>
                     <div class="mb-3">
                         <input type="password" name="password" class="form-control p-2" placeholder="รหัสผ่าน" required>

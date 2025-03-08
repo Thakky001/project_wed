@@ -143,21 +143,19 @@ function acceptRequest($status, $requestId, $eventId) {
     $stmt->bind_param("sii", $status, $requestId, $eventId);
     $result = $stmt->execute();
     return $result;
-
 }
 
 function getRequest($requestId) {    
     $conn = getConnection();
-    $sql = "SELECT DISTINCT e.img, e.even_name, e.description, e.date, r.* 
+    $sql = "SELECT DISTINCT e.img, e.even_name, e.description, e.date, r.*
             FROM register_events r 
             JOIN events e ON r.event_id = e.eid
-            WHERE r.user_id = ? 
-            AND r.status = 'confirm' ";
+            WHERE r.user_id = ? ";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $requestId);
     $stmt->execute(); 
     $result = $stmt->get_result(); 
-    return $result->fetch_assoc(); 
+    return $result; 
 }
 
 
@@ -188,6 +186,15 @@ function countEvent($event_id)
     return $result;
 }
 
+
+function checkId($checkId, $uid, $eventId) {    
+    $conn = getConnection();
+    $sql = "UPDATE register_events SET check_Id = ? WHERE user_id = ? AND event_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sii", $checkId, $uid, $eventId);
+    $result = $stmt->execute();
+    return $result;
+}
 
 
 
