@@ -109,7 +109,7 @@ function getPendingEventRequests($creatorId) {
     }
 
     $stmt = $conn->prepare("
-        SELECT r.rid, u.uid, e.eid, r.status , u.name
+        SELECT r.rid, u.uid, e.eid, r.status , u.name, r.check_Id
         FROM register_events r
         JOIN users u ON r.user_id = u.uid
         JOIN events e ON r.event_id = e.eid
@@ -145,6 +145,21 @@ function acceptRequest($status, $requestId, $eventId) {
     return $result;
 
 }
+
+function getRequest($requestId) {    
+    $conn = getConnection();
+    $sql = "SELECT DISTINCT e.img, e.even_name, e.description, e.date, r.* 
+            FROM register_events r 
+            JOIN events e ON r.event_id = e.eid
+            WHERE r.user_id = ? 
+            AND r.status = 'confirm' ";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $requestId);
+    $stmt->execute(); 
+    $result = $stmt->get_result(); 
+    return $result->fetch_assoc(); 
+}
+
 
 function checkName($event_id)
 {

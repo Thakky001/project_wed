@@ -3,7 +3,6 @@
     $eid = $_GET['eid'];
     $status = $_GET['status'];
     $result = acceptRequest($status, $uid, $eid);
-    $creatorId = $_SESSION["uid"];
-    $requests = getPendingEventRequests($creatorId);
-    renderView('request_get', ['requests' => $requests]);
+    $checkName = getRequest($uid);
+    renderView('check_name_get', ['requests' => $checkName]);
 ?>

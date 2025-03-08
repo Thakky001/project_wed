@@ -1,3 +1,11 @@
+<?php
+// ตรวจสอบว่า $data['requests'] มีค่าหรือไม่
+$result = isset($data['requests']) ? (is_array($data['requests']) ? $data['requests'] : [$data['requests']]) : [];
+
+// Debug ดูค่าจริงๆ ของ $result
+var_dump($result);
+?>
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -14,37 +22,27 @@
         <div class="content-container">
             <div class="activity-container">
                 <div class="activity-card">
-                    <img src="activity1.jpg" alt="กิจกรรม" class="activity-image">
-                    <div class="activity-info">
-                        <h5>กิจกรรมที่ร่วม</h5>
-                    </div>
-                    <div class="activity-action">
-                        <a href="#">คำร้อง</a><br>
-                        <input type="text" class="form-control otp-input" placeholder="กรอก OTP">
-                        <button class="btn btn-success btn-sm mt-2">ยืนยัน</button>
-                    </div>
-                </div>
-                <div class="activity-card">
-                    <img src="activity2.jpg" alt="กิจกรรม" class="activity-image">
-                    <div class="activity-info">
-                        <h5>กิจกรรมที่ร่วม</h5>
-                    </div>
-                    <div class="activity-action">
-                        <a href="#">คำร้อง</a><br>
-                        <input type="text" class="form-control otp-input" placeholder="กรอก OTP">
-                        <button class="btn btn-success btn-sm mt-2">ยืนยัน</button>
-                    </div>
-                </div>
-                <div class="activity-card">
-                    <img src="https://p16-va.lemon8cdn.com/tos-alisg-v-a3e477-sg/oQEeSfyJUCAhB7zwINEbAQAgh0nkEiN2LA5E2O~tplv-tej9nj120t-origin.webp" alt="กิจกรรม" class="activity-image">
-                    <div class="activity-info">
-                        <h5>กิจกรรมที่ร่วม</h5>
-                    </div>
-                    <div class="activity-action">
-                        <a href="#">คำร้อง</a><br>
-                        <input type="text" class="form-control otp-input" placeholder="กรอก OTP">
-                        <button class="btn btn-success btn-sm mt-2">ยืนยัน</button>
-                    </div>
+                <?php if (!empty($result)) { ?>
+                    <?php foreach ($result as $row) { ?>
+                        <?php if (isset($row['status']) && $row['status'] == 'confirm') { ?>
+                            <div class="activity-card">
+                                <img src="<?php echo htmlspecialchars($row['img']); ?>" alt="กิจกรรม" class="activity-image">
+                                <div class="activity-info">
+                                    <h5><?php echo htmlspecialchars($row['even_name']); ?></h5>
+                                    <p>วันที่: <?php echo htmlspecialchars($row['date']); ?></p>
+                                    <p>รายละเอียด: <?php echo htmlspecialchars($row['description']); ?></p>
+                                </div>
+                                <div class="activity-action">
+                                    <a href="#">คำร้อง</a><br>
+                                    <input type="text" class="form-control otp-input" placeholder="กรอก OTP">
+                                    <button class="btn btn-success btn-sm mt-2">ยืนยัน</button>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    <?php } ?>
+                <?php } else { ?>
+                    <p class="text-center text-danger">❌ ไม่มีคำขอที่รอดำเนินการ</p>
+                <?php } ?>
                 </div>
             </div>
         </div>
@@ -52,10 +50,4 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
-<script>
-    function toggleMenu() {
-        var menu = document.getElementById("menu-list");
-        menu.style.display = (menu.style.display === "block") ? "none" : "block";
-    }
-</script>
 </html>
