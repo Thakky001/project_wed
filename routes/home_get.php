@@ -1,5 +1,5 @@
 <?php
-// echo 'HomePage Work!!!';
+
 if (isset($_SESSION['uid']))
 {
     $data = getUserById($_SESSION['uid']);

@@ -59,19 +59,19 @@ function getUserRegisteredEvents($user_id): array
     $result = $stmt->get_result();
     return $result ? $result->fetch_all(MYSQLI_ASSOC) : []; 
 }
-
 function isUserRegistered($user_id, $event_id) {
-    $conn = getConnection(); // ฟังก์ชันเชื่อมต่อฐานข้อมูล
+    $conn = getConnection();
     $sql = "SELECT COUNT(*) FROM register_events WHERE user_id = ? AND event_id = ?";
     $stmt = $conn->prepare($sql);
+    
     $stmt->bind_param("ii", $user_id, $event_id);
     $stmt->execute();
     $stmt->bind_result($count);
     $stmt->fetch();
-    $stmt->close();
     
-    return $count > 0; 
+    return $count > 0; // คืนค่า true ถ้ามีข้อมูล, false ถ้าไม่มี
 }
+
 
 
 function getMemberEvent($event_id)

@@ -1,5 +1,5 @@
 <?php
-$events = $data['myEvents'];
+    $events = $data['myEvents'];
 ?>
 
 <!DOCTYPE html>

@@ -3,6 +3,6 @@
     $eid = $_GET['eid'];
     $checkId = $_GET['checkId'];
     $check_Name = checkId($checkId, $uid, $eid);
-    $checkName = getRequest($uid);
+    $checkName = getRequest($uid, $eid);
     renderView('check_name_get', ['requests' => $checkName]);
 ?>

@@ -4,6 +4,7 @@ $result = isset($data['Events']) ? $data['Events'] : null;
 $user_id = $_SESSION['user_id'] ?? null;
 $event_id = $result['eid'] ?? null;
 
+// ตรวจสอบว่าผู้ใช้สมัครกิจกรรมนี้แล้วหรือไม่
 $user_registered = ($user_id && $event_id) ? isUserRegistered($user_id, $event_id) : false;
 var_dump($user_registered);
 ?>
@@ -23,19 +24,22 @@ var_dump($user_registered);
         <div class="activity-card">
             <div class="activity-info">
                 <?php if (!empty($result)) { ?>
-                    <img src=<?= htmlspecialchars($result['img']); ?>><br>
-                    <text class="btn btn-secondary">จำนวนผู้เข้าร่วม <?php echo htmlspecialchars($result["total_registered"]); ?>/<?php echo htmlspecialchars($result["max_member"]); ?></text>
+                    <img src="<?= htmlspecialchars($result['img']); ?>"><br>
+                    <text class="btn btn-secondary">จำนวนผู้เข้าร่วม <?= htmlspecialchars($result["total_registered"]); ?>/<?= htmlspecialchars($result["max_member"]); ?></text>
                     <a href="/member?eid=<?= ($result["eid"]); ?>"><text class="btn btn-secondary">ผู้เข้าร่วม</text></a><br><br>
                     <input type="hidden" name="eid" value="<?= htmlspecialchars($result['eid']); ?>">
-                    <?php if (!$user_registered){?>
+                    
+                    <?php if (!$user_registered) { ?>
                         <a href="/joinEvent?eid=<?= $result['eid']; ?>" class="btn btn-success">สมัครเข้าร่วม</a>
-                    <?php }?>
-            </div>
+                    <?php } else { ?>
+                        <text class="btn btn-danger">คุณสมัครแล้ว</text>
+                    <?php } ?>
+                </div>
             <div class="activity-details">
                 <h4>ชื่อกิจกรรม</h4>
-                <h4><?php echo htmlspecialchars($result["even_name"]); ?></h4>
+                <h4><?= htmlspecialchars($result["even_name"]); ?></h4>
                 <p>ข้อมูลอื่นๆ</p>
-                <p><?php echo nl2br(htmlspecialchars($result["description"])); ?></p>
+                <p><?= nl2br(htmlspecialchars($result["description"])); ?></p>
             </div>
         </div>
     <?php } ?>
@@ -47,5 +51,4 @@ var_dump($user_registered);
         menu.style.display = (menu.style.display === "block") ? "none" : "block";
     }
 </script>
-
 </html>
