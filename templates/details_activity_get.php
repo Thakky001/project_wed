@@ -1,12 +1,11 @@
 <?php
 $result = isset($data['Events']) ? $data['Events'] : null;
 
-$user_id = $_SESSION['user_id'] ?? null;
 $event_id = $result['eid'] ?? null;
+$uid = $_SESSION['uid'];
 
-// ตรวจสอบว่าผู้ใช้สมัครกิจกรรมนี้แล้วหรือไม่
-$user_registered = ($user_id && $event_id) ? isUserRegistered($user_id, $event_id) : false;
-var_dump($user_registered);
+$user_registered = isUserRegistered($uid, $event_id);
+
 ?>
 
 <!DOCTYPE html>

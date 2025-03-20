@@ -68,8 +68,9 @@ function isUserRegistered($user_id, $event_id) {
     $stmt->execute();
     $stmt->bind_result($count);
     $stmt->fetch();
+    var_dump($count);
     
-    return $count > 0; // คืนค่า true ถ้ามีข้อมูล, false ถ้าไม่มี
+    return (int)$count > 0; 
 }
 
 
