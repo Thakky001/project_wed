@@ -62,16 +62,55 @@ function deleteEvent($event_id) {
         return $result;
     }
 
+    function searchEventsAndDate($search_keyword, $search_date): mysqli_result {
+        $conn = getConnection();
+    
+        // ตรวจสอบว่ามีการใส่ค่าทั้ง 2 ตัวแปรหรือไม่
+        if (!empty($search_keyword) || !empty($search_date)) {
+            $sql = "SELECT * FROM events WHERE even_name LIKE ? OR date = ? ORDER BY date ASC";
+            $stmt = $conn->prepare($sql);
+            if (!$stmt) {
+                die("SQL Error: " . $conn->error); // แสดง error ถ้า prepare ไม่สำเร็จ
+            }
+            $search_param = "%" . $search_keyword . "%";
+            $stmt->bind_param("ss", $search_param, $search_date);
+        } elseif (!empty($search_keyword)) {
+            $sql = "SELECT * FROM events WHERE even_name LIKE ? ORDER BY date ASC";
+            $stmt = $conn->prepare($sql);
+            if (!$stmt) {
+                die("SQL Error: " . $conn->error);
+            }
+            $search_param = "%" . $search_keyword . "%";
+            $stmt->bind_param("s", $search_param);
+        } elseif (!empty($search_date)) {
+            $sql = "SELECT * FROM events WHERE date = ? ORDER BY date ASC";
+            $stmt = $conn->prepare($sql);
+            if (!$stmt) {
+                die("SQL Error: " . $conn->error);
+            }
+            $stmt->bind_param("s", $search_date);
+        } else {
+            die("Error: ต้องใส่ keyword หรือ date อย่างน้อย 1 ค่า");
+        }
+    
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;
+    }
+    
+    
+
 
     
     
     function getEventById($event_id) {
         $conn = getConnection();
         $sql = "SELECT e.*, 
-                       (SELECT COUNT(event_id) FROM register_events r WHERE r.event_id = e.eid) AS total_registered 
-                FROM events e
-                WHERE e.eid = ?";
-        
+                       r.*, 
+                       COUNT(r.event_id) OVER (PARTITION BY e.eid) AS total_registered
+                       FROM events e
+                       LEFT JOIN register_events r ON e.eid = r.event_id
+                        WHERE e.eid = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $event_id);
         $stmt->execute();

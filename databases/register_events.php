@@ -60,16 +60,19 @@ function getUserRegisteredEvents($user_id): array
     return $result ? $result->fetch_all(MYSQLI_ASSOC) : []; 
 }
 
-function isUserRegistered($user_id, $event_id): bool
-{
-    $conn = getConnection();
-    $sql = "SELECT * FROM register_events WHERE user_id = ? AND event_id = ?";
+function isUserRegistered($user_id, $event_id) {
+    $conn = getConnection(); // ฟังก์ชันเชื่อมต่อฐานข้อมูล
+    $sql = "SELECT COUNT(*) FROM register_events WHERE user_id = ? AND event_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ii", $user_id, $event_id);
     $stmt->execute();
-    $result = $stmt->get_result();
-    return $result->num_rows > 0; 
+    $stmt->bind_result($count);
+    $stmt->fetch();
+    $stmt->close();
+    
+    return $count > 0; 
 }
+
 
 function getMemberEvent($event_id)
 {
@@ -145,14 +148,15 @@ function acceptRequest($status, $requestId, $eventId) {
     return $result;
 }
 
-function getRequest($requestId) {    
+function getRequest($requestId, $eid) {    
     $conn = getConnection();
-    $sql = "SELECT DISTINCT e.img, e.even_name, e.description, e.date, r.*
+    $sql = "SELECT DISTINCT e.eid, e.img, e.even_name, e.description, e.date, e.user_id, r.*
             FROM register_events r 
             JOIN events e ON r.event_id = e.eid
-            WHERE r.user_id = ? ";
+            WHERE e.user_id = ?
+            AND e.eid = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $requestId);
+    $stmt->bind_param("ii", $requestId, $eid);
     $stmt->execute(); 
     $result = $stmt->get_result(); 
     return $result; 
@@ -195,6 +199,8 @@ function checkId($checkId, $uid, $eventId) {
     $result = $stmt->execute();
     return $result;
 }
+
+
 
 
 

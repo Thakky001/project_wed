@@ -1,5 +1,11 @@
 <?php
 $result = isset($data['Events']) ? $data['Events'] : null;
+
+$user_id = $_SESSION['user_id'] ?? null;
+$event_id = $result['eid'] ?? null;
+
+$user_registered = ($user_id && $event_id) ? isUserRegistered($user_id, $event_id) : false;
+var_dump($user_registered);
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +27,9 @@ $result = isset($data['Events']) ? $data['Events'] : null;
                     <text class="btn btn-secondary">จำนวนผู้เข้าร่วม <?php echo htmlspecialchars($result["total_registered"]); ?>/<?php echo htmlspecialchars($result["max_member"]); ?></text>
                     <a href="/member?eid=<?= ($result["eid"]); ?>"><text class="btn btn-secondary">ผู้เข้าร่วม</text></a><br><br>
                     <input type="hidden" name="eid" value="<?= htmlspecialchars($result['eid']); ?>">
-                    <a href="/joinEvent?eid=<?= $result['eid']; ?>" class="btn btn-success">สมัครเข้าร่วม</a>
+                    <?php if (!$user_registered){?>
+                        <a href="/joinEvent?eid=<?= $result['eid']; ?>" class="btn btn-success">สมัครเข้าร่วม</a>
+                    <?php }?>
             </div>
             <div class="activity-details">
                 <h4>ชื่อกิจกรรม</h4>

@@ -1,5 +1,4 @@
 <?php
-// ตรวจสอบว่ามีค่าตัวแปร $data['requests'] และเป็น mysqli_result หรือไม่
 $result = isset($data['requests']) && is_object($data['requests']) ? $data['requests'] : null;
 ?>
 
@@ -31,8 +30,6 @@ $result = isset($data['requests']) && is_object($data['requests']) ? $data['requ
                             <?php if ($row['status'] == 'confirm'): ?>
                                 <?php if ($row['check_Id'] == 0): ?>
                                     <div class="activity-action">
-                                        <a href="#">คำร้อง</a><br>
-                                        <input type="text" class="form-control otp-input" placeholder="กรอก OTP">
                                         <a class="btn btn-success btn-sm mt-2"
                                             href="/checkName?eid=<?= htmlspecialchars($row['event_id'] ?? ''); ?>&uid=<?= htmlspecialchars($row['user_id'] ?? ''); ?>&checkId=1">
                                             ยืนยัน

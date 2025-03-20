@@ -5,7 +5,6 @@ $email = $_POST["email"] ;
 $birthday = $_POST["birthday"]; 
 $id = $_SESSION["uid"];
 $result = getUserById($id);
-var_dump($id);
 // ตรวจสอบว่ามีไฟล์อัปโหลดหรือไม่
 if (isset($_FILES["img"]) && $_FILES["img"]["error"] == 0) {
     $target_dir = "uploads/";
@@ -16,8 +15,6 @@ if (isset($_FILES["img"]) && $_FILES["img"]["error"] == 0) {
     $img = basename($_FILES["img"]["name"]);
     $target_file = $target_dir . $img;
     if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
-        
-        // var_dump($result);
         $updateSuccess = updateUser($result, $name, $email, $img, $birthday);
         var_dump($updateSuccess);
         renderView('profile_get',['result' => $result]);

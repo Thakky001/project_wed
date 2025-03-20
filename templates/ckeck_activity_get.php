@@ -24,6 +24,11 @@ $events = $data['myEvents'];
                                 <h4>กิจกรรม: <?php echo htmlspecialchars($row['even_name']); ?></h4>
                             </div>
                             <div class="action-buttons">
+                                <form action="/check_name" method="GET">
+                                    <input type="hidden" name="uid" value="<?= htmlspecialchars($row["user_id"]); ?>">
+                                    <input type="hidden" name="eid" value="<?= htmlspecialchars($row["eid"]); ?>">
+                                    <button type="submit" class="btn btn-warning">เช็คชื่อ</button>
+                                </form>
                                 <a href="/request?eid=<?= ($row["eid"]); ?>">
                                     <button class="btn btn-warning">คำขอกิจกรรม</button>
                                     <input type="hidden" name="event_id" value="<?php echo htmlspecialchars($row["eid"]); ?>">

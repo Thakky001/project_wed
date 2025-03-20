@@ -4,8 +4,8 @@
     $description = $_POST["description"];
     $status = $_POST["status"];
     $date = $_POST["date"];
-    $img = $_FILES["img"]["name"]; // รับชื่อไฟล์ภาพ
-    $target_dir = "uploads/"; // ไดเรกทอรีที่เก็บไฟล์
+    $img = $_FILES["img"]["name"];
+    $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["img"]["name"]);
     $search_keyword = "";
     

@@ -2,7 +2,6 @@
     $result = isset($data['Events']) ? $data['Events'] : null;
     $search_keyword = isset($_GET['search']) ? $_GET['search'] : "";
     $search_date = isset($_GET['date']) ? $_GET['date'] : "";
-    $search_date1 = isset($_GET['date1']) ? $_GET['date1'] : "";
 ?>
 
 <!DOCTYPE html>
@@ -38,12 +37,10 @@
 <body>
     <div class="container mt-4">
         <div class="d-flex justify-content-center my-3">
-            <form method="get" action="/activity" class="input-group w-50">
+            <form method="get" action="/search" class="input-group w-50">
                 <input type="text" name="search" class="form-control" placeholder="ค้นหากิจกรรม" value="<?php echo htmlspecialchars($search_keyword); ?>">
-                <h4>:          จาก          :</h4>
+                <h4></h4>
                 <input type="date" name="date" class="form-control" value="<?php echo htmlspecialchars($search_date); ?>">
-                <h4>:          ถึง           :</h4>
-                <input type="date" name="date" class="form-control" value="<?php echo htmlspecialchars($search_date1); ?>">
                 <button type="submit" class="btn btn-primary">ค้นหา</button>
             </form>
         </div>

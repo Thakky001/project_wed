@@ -10,7 +10,7 @@ $page_titles = [
     "profile" => "โปรไฟล์",
     "activity" => "กิจกรรม",
     "check_name" => "เช็คชื่อ",
-    "ckeck_activity" => "เช็คกิจกรรม",
+    "ckeck_activity" => "กิจกรรมที่สร้าง",
     "create_activity" => "สร้างกิจกรรม",
     "request" => "คำร้องขอ",
     "member" => "ผู้เข้าร่วมกิจกรรม"
@@ -21,7 +21,6 @@ $page = basename(parse_url($request_uri, PHP_URL_PATH), ".php");
 
 $title = $page_titles[$page] ?? "กิจกรรม";
 
-// เช็คว่าหน้านี้เป็น login หรือ register หรือไม่
 $hide_header = in_array($page, ["logout", "register"]);
 ?>
 
@@ -45,8 +44,8 @@ $hide_header = in_array($page, ["logout", "register"]);
     <div class="menu-list" id="menu-list">
         <a href="/profile">โปรไฟล์</a>
         <a href="/activity">กิจกรรม</a>
-        <a href="/check_name">เช็คชื่อ</a>
-        <a href="/ckeck_activity">เช็คกิจกรรม</a>
+        <!-- <a href="/check_name">เช็คชื่อ</a> -->
+        <a href="/ckeck_activity">กิจกรรมที่สร้าง</a>
         <a href="/create_activity">สร้างกิจกรรม</a>
         <a href="/logout">ออกจากระบบ</a>
     </div>

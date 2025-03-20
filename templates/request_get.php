@@ -1,5 +1,5 @@
 <?php
-$result = $data['requests'];
+    $result = $data['requests'];
 ?>
 
 <!DOCTYPE html>

@@ -10,7 +10,7 @@ if (isset($_GET["search"])) {
 }
 $Events = searchEvents($search_keyword);
 $joinEvent = joinEvent($eventId, $userId);
-var_dump($joinEvent);
+echo "ลงทะเบียนสำเร็จ";
 if ($joinEvent) {
     renderView('activity_get', ['Events' => $Events]);
 } else {
