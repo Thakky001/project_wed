@@ -25,7 +25,7 @@ $user_registered = isUserRegistered($uid, $event_id);
                 <?php if (!empty($result)) { ?>
                     <img src="<?= htmlspecialchars($result['img']); ?>"><br>
                     <text class="btn btn-secondary">จำนวนผู้เข้าร่วม <?= htmlspecialchars($result["total_registered"]); ?>/<?= htmlspecialchars($result["max_member"]); ?></text>
-                    <a href="/member?eid=<?= ($result["eid"]); ?>"><text class="btn btn-secondary">ผู้เข้าร่วม</text></a><br><br>
+                    <a href="/member?eid=<?= ($result["eid"]); ?>"><text class="btn btn-secondary">ดูผู้เข้าร่วม 👈🏻</text></a><br><br>
                     <input type="hidden" name="eid" value="<?= htmlspecialchars($result['eid']); ?>">
                     
                     <?php if (!$user_registered) { ?>

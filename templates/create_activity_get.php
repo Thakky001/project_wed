@@ -14,7 +14,7 @@
         <div class="activity-card">
             <div class="activity-info">
                 <form method="post" action="/create_activity" enctype="multipart/form-data">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyD-461keXKrLe2hEQh2rp7owl1Iq8tbpuBg&s"><br>
+                    <img src="https://cdn.pixabay.com/photo/2017/11/10/05/24/add-2935429_1280.png"><br>
                     <div>
                         <label for="profileImage" class="file-upload-btn">เพิ่มรูป</label>
                         <input type="file" id="img" name="img" accept="image/*" >

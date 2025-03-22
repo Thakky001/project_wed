@@ -13,7 +13,8 @@ $page_titles = [
     "ckeck_activity" => "กิจกรรมที่สร้าง",
     "create_activity" => "สร้างกิจกรรม",
     "request" => "คำร้องขอ",
-    "member" => "ผู้เข้าร่วมกิจกรรม"
+    "member" => "ผู้เข้าร่วมกิจกรรม",
+    "myrequest" => "ขอเข้าร่วมกิจกรรม"
 ];
 
 $request_uri = $_SERVER['REQUEST_URI'];
@@ -47,6 +48,7 @@ $hide_header = in_array($page, ["logout", "register"]);
         <!-- <a href="/check_name">เช็คชื่อ</a> -->
         <a href="/ckeck_activity">กิจกรรมที่สร้าง</a>
         <a href="/create_activity">สร้างกิจกรรม</a>
+        <a href="/myrequest">ขอเข้าร่วม</a>
         <a href="/logout">ออกจากระบบ</a>
     </div>
     <?php endif; ?>

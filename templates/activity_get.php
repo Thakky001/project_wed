@@ -57,7 +57,7 @@
                                 <div class="col-md-8">
                                     <div class="card-body d-flex justify-content-between align-items-center">
                                         <a href="/details_activity?eid=<?= htmlspecialchars($row['eid']); ?>&uid=<?= htmlspecialchars($row['user_id']); ?>" class="text-decoration-none text-dark fw-bold">
-                                            <?php echo htmlspecialchars($row['even_name']); ?>
+                                            <?php echo 'รายละเอียดกิจกรรม : ' . htmlspecialchars($row['even_name']);?>
                                         </a>
                                         <span class="badge"> <?php echo htmlspecialchars($row['max_member']); ?> คน </span>
                                     </div>
