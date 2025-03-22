@@ -68,7 +68,6 @@ function isUserRegistered($user_id, $event_id) {
     $stmt->execute();
     $stmt->bind_result($count);
     $stmt->fetch();
-    var_dump($count);
     
     return (int)$count > 0; 
 }
