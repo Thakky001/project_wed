@@ -12,7 +12,7 @@ $Events = searchEvents($search_keyword);
 $joinEvent = joinEvent($eventId, $userId);
 
 if ($joinEvent) {
-    renderView('activity_get', ['Events' => $Events]);
+    renderView('myrequest_get', ['Events' => $Events]);
 } else {
     echo "ไม่สามารถเข้าร่วมได้";
 }

@@ -22,7 +22,7 @@
         $addSuccess = addEvent($event_name, $max_member, $description, $img, $date, $status, $_SESSION["uid"]);
         if ($addSuccess) {
             $result = searchEvents($search_keyword);
-            renderView('create_activity_get',['result' => $result]);
+            renderView('activity_get',['Events' => $result]);
         } else {
             echo "เกิดข้อผิดพลาด: ". $addSuccess;
         }

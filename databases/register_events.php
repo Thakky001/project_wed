@@ -177,6 +177,27 @@ function checkName($event_id)
     return $result;
 }
 
+function checkRequst($uid)
+{
+    $conn = getConnection();
+    $sql = "SELECT DISTINCT 
+    u.*, 
+    r.rid, 
+    r.event_id, 
+    r.status, 
+    e.even_name
+    FROM users u
+    JOIN register_events r ON u.uid = r.user_id
+    JOIN events e ON r.event_id = e.eid
+    WHERE u.uid = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $uid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $data = $result->fetch_all(MYSQLI_ASSOC);
+    return $data;
+}
+
 function countEvent($event_id)
 {
     $conn = getConnection();
@@ -200,7 +221,17 @@ function checkId($checkId, $uid, $eventId) {
     return $result;
 }
 
-
-
+function deletemyrequest($rid) {
+    $conn = getConnection();
+    // ลบข้อมูลอีเวนต์ออกจากฐานข้อมูล
+    $sql = "DELETE FROM register_events WHERE rid = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $rid);
+    if ($stmt->execute()) {
+        return "ลบอีเวนต์สำเร็จ";
+    } else {
+        return "เกิดข้อผิดพลาดในการลบอีเวนต์";
+    }
+}
 
 
