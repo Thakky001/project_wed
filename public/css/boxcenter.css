@@ -52,6 +52,10 @@ body {
     display: flex;
     gap: 10px;
 }
+/* in activity */
+.badge {
+    background-color: #28a745;
+}
 
 /* in check name */
 .activity-container {
