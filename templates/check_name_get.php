@@ -24,9 +24,8 @@ $result = isset($data['requests']) && is_object($data['requests']) ? $data['requ
                             <img src="<?php echo htmlspecialchars($row['img'] ?? 'default.jpg'); ?>"
                                 alt="กิจกรรม" class="activity-image">
                             <div class="activity-info">
-                                <h5><?php echo htmlspecialchars($row['even_name'] ?? "ไม่ทราบชื่อกิจกรรม"); ?></h5>
+                                <h5><?php echo htmlspecialchars($row['name'] ?? "ไม่ทราบชื่อกิจกรรม"); ?></h5>
                             </div>
-
                             <?php if ($row['status'] == 'confirm'): ?>
                                 <?php if ($row['check_Id'] == 0): ?>
                                     <div class="activity-action">

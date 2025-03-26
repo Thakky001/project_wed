@@ -57,7 +57,7 @@ function getUserRegisteredEvents($user_id): array
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
-    return $result ? $result->fetch_all(MYSQLI_ASSOC) : []; 
+    return $result ?  $result->fetch_all(MYSQLI_ASSOC) : []; 
 }
 function isUserRegistered($user_id, $event_id) {
     $conn = getConnection();
@@ -148,19 +148,7 @@ function acceptRequest($status, $requestId, $eventId) {
     return $result;
 }
 
-function getRequest($requestId, $eid) {    
-    $conn = getConnection();
-    $sql = "SELECT DISTINCT e.eid, e.img, e.even_name, e.description, e.date, e.user_id, r.*
-            FROM register_events r 
-            JOIN events e ON r.event_id = e.eid
-            WHERE e.user_id = ?
-            AND e.eid = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ii", $requestId, $eid);
-    $stmt->execute(); 
-    $result = $stmt->get_result(); 
-    return $result; 
-}
+
 
 
 function checkName($event_id)
@@ -235,3 +223,16 @@ function deletemyrequest($rid) {
 }
 
 
+function getRequest($eid) {    
+    $conn = getConnection();
+    $sql = "SELECT DISTINCT e.eid, e.img, e.even_name, e.description, e.date, e.user_id, r.*,u.name, u.img
+            FROM users u
+            JOIN register_events r ON u.uid = r.user_id
+            JOIN events e ON r.event_id = e.eid
+            WHERE r.event_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $eid);
+    $stmt->execute(); 
+    $result = $stmt->get_result(); 
+    return $result; 
+}

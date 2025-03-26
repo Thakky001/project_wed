@@ -121,7 +121,7 @@ function deleteEvent($event_id) {
     
 
     function getUserEvents($user_id) {
-        $conn = getConnection(); // ฟังก์ชันเชื่อมต่อฐานข้อมูล
+        $conn = getConnection();
         $sql = "SELECT eid, even_name, max_member, date, description, img, status, user_id FROM events WHERE user_id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $user_id);
