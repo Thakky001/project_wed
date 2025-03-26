@@ -13,22 +13,6 @@
     <link rel="stylesheet" href="css/boxcenter.css">
     <title>กิจกรรม</title>
     <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .card {
-            background-color: #ffffff;
-            border: 1px solid #dee2e6;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #0056b3;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
         .badge {
             background-color: #28a745;
         }
